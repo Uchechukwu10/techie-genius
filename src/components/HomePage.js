@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { QuizContext } from '../assets/Contexts';
 import { FaLightbulb } from 'react-icons/fa'; 
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Category from './Category';
-import NavBar from './NavBar';
 import maths from '../assets/images/maths.png';
 import english from '../assets/images/signature.png';
 import chemistry from '../assets/images/chemistry.png';
@@ -44,12 +43,14 @@ const HomePage = (props) => {
 
     const { gameState, setGameState } = useContext(QuizContext);
     const { timerHours, timerMinutes, timerSeconds, timeLeft } = useContext(QuizContext);
-    const { category, setCategory } = useContext(QuizContext);
+    const { setCategory } = useContext(QuizContext);
 
+    useEffect(() => {
+        if (timeLeft < 0 && timeLeft > -2000) {
+            setGameState('end');
+        }
+    });
 
-    const startGame = () => {
-        setGameState("playing");
-    }
   return (
     <div>
         <div className='banner' id='banner'>
@@ -62,6 +63,10 @@ const HomePage = (props) => {
                 }
             </div>          
         </div>
+        {gameState==='readytoplay' ?
+        <div className='banner-box'>
+            <h4>Your Quiz is Going on Now, Goodluck!</h4>
+        </div> :
         <div className='banner-box'>
             <h4>Enter your quiz code here</h4>
             <p>Play with your friends</p>
@@ -76,7 +81,7 @@ const HomePage = (props) => {
                 Enter
                 </Button>
             </InputGroup>
-        </div>
+        </div>}
         <h3 className='categories-title'>Quiz Categories</h3>
         <div className='categories' >
         {categories.map((category, index) => {

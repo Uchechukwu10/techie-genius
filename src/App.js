@@ -1,4 +1,4 @@
-import {React, useState, useContext, useEffect} from 'react';
+import {React, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './components/HomePage';
@@ -20,9 +20,9 @@ function App() {
   let interval;
 
   const startTimer = () => {
+    setGameState('readytoplay');
     const future = new Date().getTime();
     const deadline = future + 120000;
-    console.log(future);
 
     interval = setInterval(() => {
       const now = new Date().getTime();
@@ -36,8 +36,7 @@ function App() {
 
       if (distance < 0) {
         // Stop Timer
-
-        clearInterval(interval.current);
+        clearInterval(interval);
       } else {
         // Update Timer
         setTimerHours(hours.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}));
@@ -52,8 +51,9 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <QuizContext.Provider value={{ gameState, setGameState, score, setScore, timerHours, timerMinutes, timerSeconds, timeLeft, category, setCategory, completed, setCompleted }}>
+      <QuizContext.Provider value={{ gameState, setGameState, score, setScore, timerHours, timerMinutes, timerSeconds, timeLeft, setTimeLeft, category, setCategory, completed, setCompleted }}>
       {gameState==='start' && <HomePage startTimer={startTimer}/>}
+      {gameState==='readytoplay' && <HomePage startTimer={startTimer}/>}
       {gameState==='playing' && <QuestionView />}
       {gameState==='end' && <EndQuiz />}
       </QuizContext.Provider>

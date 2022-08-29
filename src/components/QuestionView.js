@@ -10,10 +10,10 @@ const QuestionView = () => {
     const selectOption = (chosen) => {
         setSelected(chosen);
     }
-    const { gameState, setGameState } = useContext(QuizContext);
+    const { setGameState } = useContext(QuizContext);
     const { score, setScore } = useContext(QuizContext);
     const { timerHours, timerMinutes, timerSeconds, timeLeft } = useContext(QuizContext);
-    const { category, setCategory } = useContext(QuizContext);
+    const { category } = useContext(QuizContext);
     const { completed, setCompleted } = useContext(QuizContext);
 
     let question;

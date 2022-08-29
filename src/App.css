@@ -76,6 +76,16 @@ body {
     right: 0;
     top: 0;
 }
+@media only screen and (max-width: 600px) {
+    .categories {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .banner-box {
+        width: 80%;
+    }
+}
 
 
 
@@ -92,6 +102,7 @@ body {
     padding: 20px 100px 20px 20px;
     border-radius: 8px;
     margin: 20px;
+    /* pointer-events: none; */
 }
 .category-sub {
     display: flex;
@@ -100,6 +111,11 @@ body {
 .completed {
     background-color:#898989;
     opacity: 50%;
+}
+@media only screen and (max-width: 600px) {
+    .category {
+        width: 90%;
+    }
 }
 
 /****************** Question View ********************/

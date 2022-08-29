@@ -3,10 +3,14 @@ import { QuizContext } from '../assets/Contexts';
 
 
 const EndQuiz = () => {
-  const {gameState, setGameState} = useContext(QuizContext);
-  const { score, setScore } = useContext(QuizContext);
+  const { setGameState} = useContext(QuizContext);
+  const { score } = useContext(QuizContext);
+  const { setCompleted } = useContext(QuizContext);
+  const { setTimeLeft } = useContext(QuizContext);
+  setCompleted(['Mathematics', 'English', 'Physics', 'Chemistry', 'Economics']);
 
   const returnHome = () => {
+    setTimeLeft(0);
     setGameState('start');
   }
   return (
