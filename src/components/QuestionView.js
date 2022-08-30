@@ -33,6 +33,7 @@ const QuestionView = () => {
         if (question[currentQuestion].answer===selected) {
             setScore(score + 1);
         }
+        console.log('Done');
         setGameState('end');
         setCompleted((prevValue) => [...prevValue, category])
     }

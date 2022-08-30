@@ -5,9 +5,10 @@ import { QuizContext } from '../assets/Contexts';
 const EndQuiz = () => {
   const { setGameState} = useContext(QuizContext);
   const { score } = useContext(QuizContext);
-  const { setCompleted } = useContext(QuizContext);
-  const { setTimeLeft } = useContext(QuizContext);
-  setCompleted(['Mathematics', 'English', 'Physics', 'Chemistry', 'Economics']);
+  const { completed, setCompleted } = useContext(QuizContext);
+  const { timeLeft, setTimeLeft } = useContext(QuizContext);
+
+  // setCompleted(['Mathematics', 'English', 'Physics', 'Chemistry', 'Economics']);
 
   const returnHome = () => {
     setTimeLeft(0);

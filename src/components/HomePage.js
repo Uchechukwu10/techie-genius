@@ -43,11 +43,12 @@ const HomePage = (props) => {
 
     const { gameState, setGameState } = useContext(QuizContext);
     const { timerHours, timerMinutes, timerSeconds, timeLeft } = useContext(QuizContext);
-    const { setCategory } = useContext(QuizContext);
+    const { setCategory, setCompleted } = useContext(QuizContext);
 
     useEffect(() => {
         if (timeLeft < 0 && timeLeft > -2000) {
             setGameState('end');
+            setCompleted(['Mathematics', 'English', 'Physics', 'Chemistry', 'Economics']);
         }
     });
 
