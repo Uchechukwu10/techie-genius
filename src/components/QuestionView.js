@@ -15,6 +15,8 @@ const QuestionView = () => {
     const { timerHours, timerMinutes, timerSeconds, timeLeft } = useContext(QuizContext);
     const { category } = useContext(QuizContext);
     const { completed, setCompleted } = useContext(QuizContext);
+    const { answered, setAnswered } = useContext(QuizContext);
+    const { eachScore, setEachScore } = useContext(QuizContext);
 
     let question;
     if (category === "Mathematics") {
@@ -32,21 +34,52 @@ const QuestionView = () => {
     const finishQuiz = () => {
         if (question[currentQuestion].answer===selected) {
             setScore(score + 1);
+            setEachScore((prevValue) => {
+                return {
+                    ...prevValue,
+                    [category]: prevValue[category] + 1
+                }
+            })
         }
-        console.log('Done');
         setGameState('end');
         setCompleted((prevValue) => [...prevValue, category])
     }
-    const nextQuestion = () => {
+    const nextQuestion = (category) => {
         if (currentQuestion===5) {
             if (question[currentQuestion].answer===selected) {
                 setScore(score + 1);
+                setEachScore((prevValue) => {
+                    return {
+                        ...prevValue,
+                        [category]: prevValue[category] + 1
+                    }
+                })
             }
             setGameState('start');
             setCompleted((prevValue) => [...prevValue, category])
+            setAnswered(prevValue => {
+                return {
+                    ...prevValue,
+                    [category]: prevValue[category] + 1
+                }
+            })
         } else {
-            if (question[currentQuestion].answer===selected) {
-                setScore(score + 1)
+            if (selected) {
+                if (question[currentQuestion].answer===selected) {
+                    setScore(score + 1);
+                    setEachScore((prevValue) => {
+                        return {
+                            ...prevValue,
+                            [category]: prevValue[category] + 1
+                        }
+                    })
+                }
+                setAnswered(prevValue => {
+                    return {
+                        ...prevValue,
+                        [category]: prevValue[category] + 1
+                    }
+                })
             }
             setSelected('')
             setCurrentQuestion(currentQuestion + 1);
@@ -91,7 +124,7 @@ const QuestionView = () => {
                         <button className='previous' onClick={() => setGameState('start')}>Previous</button>
                         { currentQuestion===5 && completed.length>=4 ?
                         <button className='next' onClick={() => finishQuiz()}>End Quiz</button> :
-                        <button className='next' onClick={() => nextQuestion()}>{currentQuestion===5 ? <span>Finish Section</span> : <span>Next</span>}</button>}
+                        <button className='next' onClick={() => nextQuestion(question[currentQuestion].category)}>{currentQuestion===5 ? <span>Finish Section</span> : <span>Next</span>}</button>}
                     </div>
             </div>
             

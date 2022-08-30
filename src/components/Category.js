@@ -4,6 +4,7 @@ import { QuizContext } from '../assets/Contexts';
 
 const Category = (props) => {
     const { completed } = useContext(QuizContext);
+    const { answered, setAnswered } = useContext(QuizContext);
 
     useEffect(() => {
         if (completed.includes(props.title)) {
@@ -27,6 +28,7 @@ const Category = (props) => {
                 {completed.includes(props.title) ? <span>Completed</span> : <span>Click to start</span>}
                 </div>
             </div>
+            <p>{answered[props.title]}/6 questions answered</p>
         </div>
     </div>
   )

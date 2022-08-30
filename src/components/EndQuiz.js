@@ -7,8 +7,7 @@ const EndQuiz = () => {
   const { score } = useContext(QuizContext);
   const { completed, setCompleted } = useContext(QuizContext);
   const { timeLeft, setTimeLeft } = useContext(QuizContext);
-
-  // setCompleted(['Mathematics', 'English', 'Physics', 'Chemistry', 'Economics']);
+  const { eachScore, setEachScore } = useContext(QuizContext);
 
   const returnHome = () => {
     setTimeLeft(0);
@@ -23,6 +22,13 @@ const EndQuiz = () => {
             </div>
             <div className='return-btn' onClick={() => returnHome()}>
                 Return Home
+            </div>
+            <div>
+              <span>Mathematics: {eachScore.Mathematics}</span>
+              <span>English: {eachScore.English}</span>
+              <span>Chemistry: {eachScore.Chemistry}</span>
+              <span>Physics: {eachScore.Physics}</span>
+              <span>Economics: {eachScore.Economics}</span>
             </div>
         </div>
     </div>
