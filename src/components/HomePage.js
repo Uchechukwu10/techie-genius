@@ -55,7 +55,7 @@ const HomePage = (props) => {
   return (
     <div>
         <div className='banner' id='banner'>
-            <div><h1 className='heading'>Instructions</h1><p>1. You have 10 mins to complete this quiz<br />2. You cannot go back to a previously answered question<br />3. Once a section is finished, it can't be accesssed anymore.</p></div>
+            <div className='banner-content'><h1 className='heading'>Instructions</h1><p>1. You have 10 mins to complete this quiz<br />2. You cannot go back to a previously answered question<br />3. Once a section is finished, it can't be accesssed anymore.</p></div>
             <div className='bulb'><FaLightbulb color='#fff' fontSize='3.3em'/></div> 
             <div className='dashboard-timer'>
                 {timeLeft >= 0 ? 

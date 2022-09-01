@@ -107,8 +107,20 @@ body {
     .banner-box h4, .banner-box p {
         margin: 5px 2px;
     }
+    .banner {
+        gap: 0px;
+    }
+    .banner-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .bulb {
+        display: none;
+    }
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (min-device-width: 600px) and (max-width: 900px) {
     .categories {
         display: flex;
     }
@@ -151,7 +163,7 @@ body {
         padding: 20px;
     }
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (min-device-width: 600px) and (max-width: 900px) {
     .category {
         width: 45%;
         padding: 20px;
