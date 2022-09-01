@@ -18,17 +18,17 @@ const EndQuiz = () => {
         <div className='finish-quiz'>
             <div className='end-card'>
                 <h3><span>Congratulations!</span> on successful completion of this quiz</h3>
-                <p>Your score is <span>{score}</span></p>
+                <p>Your total score is <span>{score}</span></p>
+                <div className='final-scores'>
+                  <div className='score'><span>Mathematics: </span><span>{eachScore.Mathematics}</span></div>
+                  <div className='score'><span>English: </span><span>{eachScore.English}</span></div>
+                  <div className='score'><span>Chemistry: </span><span>{eachScore.Chemistry}</span></div>
+                  <div className='score'><span>Physics: </span><span>{eachScore.Physics}</span></div>
+                  <div className='score'><span>Economics: </span><span>{eachScore.Economics}</span></div>
+                </div>
             </div>
             <div className='return-btn' onClick={() => returnHome()}>
                 Return Home
-            </div>
-            <div>
-              <span>Mathematics: {eachScore.Mathematics}</span>
-              <span>English: {eachScore.English}</span>
-              <span>Chemistry: {eachScore.Chemistry}</span>
-              <span>Physics: {eachScore.Physics}</span>
-              <span>Economics: {eachScore.Economics}</span>
             </div>
         </div>
     </div>

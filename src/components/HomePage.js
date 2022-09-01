@@ -55,18 +55,20 @@ const HomePage = (props) => {
   return (
     <div>
         <div className='banner' id='banner'>
-            <div><h1 className='heading'>Let's Play</h1><p>Do you have what it takes to be in the top 4?</p></div>
+            <div><h1 className='heading'>Instructions</h1><p>1. You have 10 mins to complete this quiz<br />2. You cannot go back to a previously answered question<br />3. Once a section is finished, it can't be accesssed anymore.</p></div>
             <div className='bulb'><FaLightbulb color='#fff' fontSize='3.3em'/></div> 
             <div className='dashboard-timer'>
                 {timeLeft >= 0 ? 
-                <div className='timer'>{timerHours}:{timerMinutes}:{timerSeconds}</div> :
-                <div className='timer'>Time is up!</div>
+                <div className='timer-home'>{timerHours}:{timerMinutes}:{timerSeconds}</div> :
+                <div className='timer-home'>Time is up!</div>
                 }
             </div>          
         </div>
         {gameState==='readytoplay' ?
         <div className='banner-box'>
-            <h4>Your Quiz is Going on Now, Goodluck!</h4>
+            <h4>Your Quiz is Going on Now</h4>
+            <br />
+            <h3>Goodluck!</h3>
         </div> :
         <div className='banner-box'>
             <h4>Enter your quiz code here</h4>
@@ -83,6 +85,8 @@ const HomePage = (props) => {
                 </Button>
             </InputGroup>
         </div>}
+        {gameState==='readytoplay' ? 
+        <div className='readytoplay'>
         <h3 className='categories-title'>Quiz Categories</h3>
         <div className='categories' >
         {categories.map((category, index) => {
@@ -95,7 +99,9 @@ const HomePage = (props) => {
             />
             )
         })}
-        </div>
+        </div></div> :
+        <div></div>}
+        
     </div>
     
   )

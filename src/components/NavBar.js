@@ -6,7 +6,7 @@ const NavBar = () => {
     <div>
         <div className='nav-full' id='nav'>
             <Navbar expand="lg">
-            <Container>
+            <div className='nav-container'>
                 <Navbar.Brand href="#home" >Techie Genius</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -15,7 +15,7 @@ const NavBar = () => {
                     <Nav.Link href="#link">About Us</Nav.Link>
                 </Nav> */}
                 </Navbar.Collapse>
-            </Container>
+            </div>
             </Navbar>
         </div>
     </div>

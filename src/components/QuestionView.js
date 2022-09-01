@@ -1,4 +1,5 @@
 import { React, useState, useContext, useEffect } from 'react';
+import { FaRegGrinSquintTears } from 'react-icons/fa';
 import { ImRadioUnchecked, ImRadioChecked } from 'react-icons/im'
 import { QuizContext } from '../assets/Contexts';
 import { Mathematics, English, Physics, Chemistry, Economics } from '../assets/QuestionBank';
@@ -42,7 +43,13 @@ const QuestionView = () => {
             })
         }
         setGameState('end');
-        setCompleted((prevValue) => [...prevValue, category])
+        setCompleted((prevValue) => {
+            if (prevValue.includes(category)===false) {
+                return (
+                    [...prevValue, category]
+                )
+            }
+        })
     }
     const nextQuestion = (category) => {
         if (currentQuestion===5) {
@@ -55,8 +62,14 @@ const QuestionView = () => {
                     }
                 })
             }
-            setGameState('start');
-            setCompleted((prevValue) => [...prevValue, category])
+            setGameState('readytoplay');
+            setCompleted((prevValue) => {
+                if (prevValue.includes(category)===false) {
+                    return (
+                        [...prevValue, category]
+                    )
+                }
+            })
             setAnswered(prevValue => {
                 return {
                     ...prevValue,
@@ -84,6 +97,16 @@ const QuestionView = () => {
             setSelected('')
             setCurrentQuestion(currentQuestion + 1);
         }      
+    }
+    const endSection = (category) => {
+        setCompleted((prevValue) => {
+            if (prevValue.includes(category)===false) {
+                setGameState('readytoplay')
+                return (
+                    [...prevValue, category]
+                )
+            }
+        })
     }
     useEffect(() => {
         if (timeLeft <= 0) {
@@ -121,7 +144,7 @@ const QuestionView = () => {
                         <strong>{question[currentQuestion].options[3]}</strong>
                     </div>
                     <div className='call-to-action'>
-                        <button className='previous' onClick={() => setGameState('start')}>Previous</button>
+                        <button className='previous' onClick={() => endSection(question[currentQuestion].category)}>End Section</button>
                         { currentQuestion===5 && completed.length>=4 ?
                         <button className='next' onClick={() => finishQuiz()}>End Quiz</button> :
                         <button className='next' onClick={() => nextQuestion(question[currentQuestion].category)}>{currentQuestion===5 ? <span>Finish Section</span> : <span>Next</span>}</button>}
