@@ -4,6 +4,9 @@ This is a quiz app currently in development phase. The end goal is to create a s
 
 It is a frontend application only for now built with react.
 
+### Stacks
+`ReactJS` 
+
 ### Guide for collaboration:
 1. Fork this repository.
 2. Clone the forked repository into your local machine.
