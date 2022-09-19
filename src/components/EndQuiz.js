@@ -1,4 +1,4 @@
-import { React, useContext } from 'react';
+import { React, useContext, useEffect } from 'react';
 import { QuizContext } from '../assets/Contexts';
 
 
@@ -6,13 +6,19 @@ const EndQuiz = () => {
   const { setGameState} = useContext(QuizContext);
   const { score } = useContext(QuizContext);
   const { completed, setCompleted } = useContext(QuizContext);
-  const { timeLeft, setTimeLeft } = useContext(QuizContext);
+  const { timeLeft, setTimeLeft, setTimerMinutes, setTimerSeconds, setTimerHours } = useContext(QuizContext);
   const { eachScore, setEachScore } = useContext(QuizContext);
 
   const returnHome = () => {
-    setTimeLeft(0);
     setGameState('start');
+    setTimeLeft(0);
   }
+
+  useEffect(() => {
+      setTimeLeft(0);
+      setCompleted(['Mathematics', 'English', 'Physics', 'Chemistry', 'Economics']);
+  }, []);
+
   return (
     <div>
         <div className='finish-quiz'>

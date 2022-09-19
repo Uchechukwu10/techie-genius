@@ -8,6 +8,7 @@ import { QuizContext } from "./assets/Contexts";
 import NavBar from "./components/NavBar";
 
 function App() {
+  
   const [gameState, setGameState] = useState("start");
   const [score, setScore] = useState(0);
   const [timerHours, setTimerHours] = useState(0);
@@ -72,7 +73,7 @@ function App() {
           })
         );
       }
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -96,7 +97,10 @@ function App() {
           answered,
           setAnswered,
           eachScore,
-          setEachScore
+          setEachScore,
+          setTimerHours,
+          setTimerMinutes,
+          setTimerSeconds,
         }}
       >
         {gameState === "start" && <HomePage startTimer={startTimer} />}

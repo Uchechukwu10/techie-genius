@@ -4,7 +4,7 @@ import { ImRadioUnchecked, ImRadioChecked } from 'react-icons/im'
 import { QuizContext } from '../assets/Contexts';
 import { Mathematics, English, Physics, Chemistry, Economics } from '../assets/QuestionBank';
 
-const QuestionView = () => {
+const QuestionView = (props) => {
     const [selected, setSelected] = useState('');
     const [currentQuestion, setCurrentQuestion] = useState(0);
  
@@ -51,6 +51,7 @@ const QuestionView = () => {
             }
         })
     }
+
     const nextQuestion = (category) => {
         if (currentQuestion===5) {
             if (question[currentQuestion].answer===selected) {

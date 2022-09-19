@@ -43,7 +43,7 @@ const HomePage = (props) => {
 
     const { gameState, setGameState } = useContext(QuizContext);
     const { timerHours, timerMinutes, timerSeconds, timeLeft } = useContext(QuizContext);
-    const { setCategory, setCompleted } = useContext(QuizContext);
+    const { setCategory, setCompleted, completed } = useContext(QuizContext);
 
     useEffect(() => {
         if (timeLeft < 0 && timeLeft > -2000) {
@@ -55,12 +55,12 @@ const HomePage = (props) => {
   return (
     <div>
         <div className='banner' id='banner'>
-            <div className='banner-content'><h1 className='heading'>Instructions</h1><p>1. You have 10 mins to complete this quiz<br />2. You cannot go back to a previously answered question<br />3. Once a section is finished, it can't be accesssed anymore.</p></div>
+            <div className='banner-content'><h1 className='heading'>Instructions</h1><p>1. You have 10 mins to complete this quiz<br />2. You cannot go back to a previously answered question<br />3. Once a section is finished/ended, it can't be accesssed anymore.</p></div>
             <div className='bulb'><FaLightbulb color='#fff' fontSize='3.3em'/></div> 
             <div className='dashboard-timer'>
-                {timeLeft >= 0 ? 
-                <div className='timer-home'>{timerHours}:{timerMinutes}:{timerSeconds}</div> :
-                <div className='timer-home'>Time is up!</div>
+                {timeLeft <= 0 || completed.length === 5 ? 
+                <div className='timer-home'>00:00:00</div> :
+                <div className='timer-home'>{timerHours}:{timerMinutes}:{timerSeconds}</div>
                 }
             </div>          
         </div>
@@ -99,7 +99,9 @@ const HomePage = (props) => {
             />
             )
         })}
-        </div></div> :
+        </div>
+        <div className='home-end-btn' onClick={() => setGameState('end')}>End Quiz</div>
+        </div> :
         <div></div>}
         
     </div>

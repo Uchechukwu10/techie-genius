@@ -95,7 +95,20 @@ body {
     top: 0;
     color: white
 }
+.home-end-btn {
+    padding: 10px;
+    margin: 15px auto;
+    background-color: #8974dd;
+    font-size: 1.7rem;
+    color: #fff;
+    border-radius: 7px;
+    width: 20%;
+    text-align: center;
+}
 @media only screen and (max-width: 600px) {
+    .home-end-btn {
+        width: 50%;
+    }
     .categories {
         display: flex;
         flex-direction: column;
