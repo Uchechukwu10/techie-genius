@@ -3,6 +3,7 @@
 This is a quiz app currently in development phase. The end goal is to create a solution for students to practice Computer based examinations at the comfort of their homes. 
 
 It is a frontend application only for now built with react.
+(Currently working on the backend...)
 
 ### Stacks
 `ReactJS` 
